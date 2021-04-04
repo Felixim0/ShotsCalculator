@@ -1,18 +1,80 @@
 [
     {
         "name": "Felix",
-        "score": 10
+        "score": [
+            {
+                "Shnaps": 1
+            },
+            {
+                "Sours": 9
+            },
+            {
+                "Vodka": 4
+            },
+            {
+                "Beer": 0
+            },
+            {
+                "Mountabtten": 0
+            },
+            {
+                "TOTAL SCORE": 0
+            },
+            {
+                "Vodka": 0
+            }
+        ]
     },
     {
         "name": "Nathan",
-        "score": 0
+        "score": [
+            {
+                "Shnaps": 0
+            },
+            {
+                "Sours": 3
+            },
+            {
+                "Vodka": 0
+            },
+            {
+                "Beer": 0
+            },
+            {
+                "Mountabtten": 0
+            },
+            {
+                "TOTAL SCORE": 0
+            },
+            {
+                "Vodka": 0
+            }
+        ]
     },
     {
         "name": "Rob",
-        "score": 0
-    },
-    {
-        "name": "Chris",
-        "score": 3
+        "score": [
+            {
+                "Shnaps": 0
+            },
+            {
+                "Sours": 0
+            },
+            {
+                "Vodka": 0
+            },
+            {
+                "Beer": 0
+            },
+            {
+                "Mountabtten": 0
+            },
+            {
+                "TOTAL SCORE": 0
+            },
+            {
+                "Vodka": 0
+            }
+        ]
     }
 ]

@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Felix",
+        "score": {
+		"vodka":4,
+		"shnaps": 2 }
+    },
+    {
+        "name": "Nathan",
+        "score": 0
+    }
+]
