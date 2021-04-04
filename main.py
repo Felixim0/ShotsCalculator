@@ -4,6 +4,11 @@ import random
 from random import randint
 import sys
 import os
+import datetime
+import json 
+from tkinter.filedialog import askopenfilename
+from pathlib import Path
+
 root=Tk()
 font = ("Calibri 30 bold")
 class Person:
@@ -15,7 +20,7 @@ class Person:
         name = Label(frame,text=str(self.name),font=("Calibri 30 bold"))
         name.grid(column=3,row=count,rowspan=2)
         
-        label = Label(frame,text="0",font=("Calibri 30 bold"))
+        label = Label(frame,text=self.shot_count,font=("Calibri 30 bold"))
         label.grid(column=0,row=count,rowspan=2)
         
         x = Label(frame,text="",font=("Calibri 30 bold"))
@@ -29,6 +34,8 @@ class Person:
     
 
     def refreshLabel(self, label):
+        if people_handler.reorder_appropriate():
+            people_handler.gen_list()
         label.config(text=str(self.shot_count),font=("Calibri 30 bold"))
 
     def increment(self, label):
@@ -43,25 +50,63 @@ class Person:
 class People:
     def __init__(self):
         self.people = []
-        
-        self.people = self.load_from_file()
         self.home_frame = Frame(root)
-
+        self.load_from_file(None)
         self.gen_list()
-        self.output_people()
+        Path("./saves").mkdir(parents=True, exist_ok=True)
 
-    def load_from_file(self):
-        file_contents = [ {"name": "Felix", "score":0} , {"name": "Nathan", "score":0},{"name": "Rob", "score":0} ]
+    def save_to_file(self):
+        dat_as_json = [{"name":x.name,"score":x.shot_count} for x in self.people]
+
+        def format_date_better(number):
+            if len(str(number)) < 2:
+                return ( "0" + str(number))
+            else:
+                return (number)
+
+        x = datetime.datetime.now()
+        time = format_date_better(str(x.day)) + "-" + format_date_better(str(x.month))  + "-" + format_date_better(str(x.year))
+        
+        with open("./saves/" + str(time) +".json", "w") as f:
+            f.write(json.dumps(dat_as_json, indent=4))
+            
+    def load_from_file(self, save_file_dr):
+        if save_file_dr == None:
+            file_contents = [ {"name": "Felix", "score":0} , {"name": "Nathan", "score":0},{"name": "Rob", "score":0} ]
+        else:
+            save_file = open(save_file_dr,"r")
+            file_contents = json.load(save_file)
+            
         temp = []
         for each_pair in file_contents:
+            print(each_pair)
             temp.append(Person(each_pair.get("name"), each_pair.get("score")))
-        return temp
-            
 
+        if save_file_dr != None:
+            self.gen_list()
+
+        self.people = temp
+        self.gen_list()
+
+    def reorder_appropriate(self):
+        # Have the numbers cahgne so the roder of naems should??
+        current_order = [(person.name, person.shot_count,person) for person in self.people]
+        sorted_by_shotcount = sorted(current_order, key=lambda tup: tup[1])
+      #  if current_order != sorted_by_shotcount:
+            #self.people = [person[2] for person in sorted_by_shotcount]
+           # self.people.reverse()
+           # print("CHANGE APPROPRIATE")
+          #  return True
+        return False
+       # print(sorted_by_second)
+        
     def gen_list(self):
         self.home_frame.destroy()
         self.home_frame = Frame(root)
         self.home_frame.grid(row=0,column=0)
+
+        #Order self.people
+        print("sdjkhfjkhdsfjk")
 
         self.count = 0
         for person in self.people:
@@ -72,19 +117,15 @@ class People:
         self.count = self.count + 4
         self.people.append(Person(name, 0))
         self.gen_list()
-        self.output_people()
 
     def remove_person(self,person):
         print(person.name)
         self.people.remove(person)
         self.gen_list()
-        self.output_people()
 
-    def output_people(self):
-        for p in self.people:
-            print(p.name)
-        print("")
-
+def choose_and_load():
+    filename = askopenfilename(initialdir="./saves") # show an "Open" dialog box and return the path to the selected file
+    people_handler.load_from_file(filename)
 
 def close_popup(name, popupframe):
     popupframe.destroy()
@@ -119,6 +160,9 @@ def remove_a_man():
         
     Button(centeredFrame, font=font, text="Cancel", command=popup.destroy).grid(row=c+1,column=0)
 
+def safely_shutdown():
+    people_handler.save_to_file()
+    root.destroy()
 
 people_handler = People()
     
@@ -130,12 +174,13 @@ menubar = Menu(root)
 filemenu = Menu(menubar, tearoff=0)
 filemenu.add_command(label="Add a New Human", command=lambda : add_a_man())
 filemenu.add_command(label="Remove an Human", command=lambda : remove_a_man())
-filemenu.add_command(label="Save", command=lambda : save_all())
+filemenu.add_command(label="Save", command=lambda : people_handler.save_to_file())
+filemenu.add_command(label="Load", command=lambda : choose_and_load())
 filemenu.add_separator()
-filemenu.add_command(label="Exit", command=root.quit)
+filemenu.add_command(label="Exit", command=lambda: safely_shutdown())
 menubar.add_cascade(label="File", menu=filemenu)
 
-
+root.protocol("WM_DELETE_WINDOW", lambda: safely_shutdown())
 root.title("Shortuis Progsrma")
 root.config(menu=menubar)
 root.mainloop()
