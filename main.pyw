@@ -51,8 +51,6 @@ class Person:
         label.config(text=str(count),font=("Calibri 30 bold"))
 
     def refresh_score_label(self):
-        print("refreshing label")
-        print(self.score)
         self.score_label.config(text=str(self.score),font=("Calibri 30 bold"))
         
 
@@ -117,7 +115,8 @@ class People:
         popup.destroy()
         self.drinks.append({"name":drink_name,"units_per_drink":units})
         for person in self.people:
-            person.consumption_count.append({drink_name:0})
+            person.consumption_count.insert(len(person.consumption_count)-1,{drink_name:0})
+        
         self.gen_list()
 
     def save_drinks_to_file(self):
@@ -222,7 +221,6 @@ class People:
                             score = round (score + ( float(units) * int(drinks_taken) ), 3)
                     
             person.score = score
-            print(score, person.score)
             person.refresh_score_label()   
             
     def add_person(self, name):
@@ -342,8 +340,6 @@ people_handler = People()
     
 menubar = Menu(root)
 filemenu = Menu(menubar, tearoff=0)
-filemenu.add_command(label="Add a New Human", command=lambda : add_a_man())
-filemenu.add_command(label="Remove an Human", command=lambda : remove_a_man())
 filemenu.add_command(label="Save", command=lambda : people_handler.save_to_file())
 filemenu.add_command(label="Load", command=lambda : choose_and_load())
 filemenu.add_separator()
@@ -353,6 +349,8 @@ menubar.add_cascade(label="File", menu=filemenu)
 editmenu = Menu(menubar, tearoff=0)
 editmenu.add_command(label="New Drink", command=lambda : add_a_drink())
 editmenu.add_command(label="Edit Existing Drink", command=lambda : edit_a_drink())
+editmenu.add_command(label="Add a New Human", command=lambda : add_a_man())
+editmenu.add_command(label="Remove an Human", command=lambda : remove_a_man())
 
 menubar.add_cascade(label="Edit", menu=editmenu)
 

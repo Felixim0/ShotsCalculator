@@ -12,10 +12,6 @@
         "units_per_drink": "1"
     },
     {
-        "name": "Mountabtten",
-        "units_per_drink": "2000"
-    },
-    {
         "name": "Vodka",
         "units_per_drink": "1.8"
     }

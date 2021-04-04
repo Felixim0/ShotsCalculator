@@ -3,25 +3,19 @@
         "name": "Felix",
         "score": [
             {
-                "Shnaps": 1
+                "Shnaps": 12
             },
             {
-                "Sours": 9
-            },
-            {
-                "Vodka": 4
+                "Sours": 0
             },
             {
                 "Beer": 0
             },
             {
-                "Mountabtten": 0
+                "Vodka": 0
             },
             {
                 "TOTAL SCORE": 0
-            },
-            {
-                "Vodka": 0
             }
         ]
     },
@@ -32,48 +26,16 @@
                 "Shnaps": 0
             },
             {
-                "Sours": 3
-            },
-            {
-                "Vodka": 0
-            },
-            {
-                "Beer": 0
-            },
-            {
-                "Mountabtten": 0
-            },
-            {
-                "TOTAL SCORE": 0
-            },
-            {
-                "Vodka": 0
-            }
-        ]
-    },
-    {
-        "name": "Rob",
-        "score": [
-            {
-                "Shnaps": 0
-            },
-            {
                 "Sours": 0
             },
             {
-                "Vodka": 0
-            },
-            {
                 "Beer": 0
             },
             {
-                "Mountabtten": 0
+                "Vodka": 0
             },
             {
                 "TOTAL SCORE": 0
-            },
-            {
-                "Vodka": 0
             }
         ]
     }
