@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "main.pyw", line 339, in <module>
+  File "main.pyw", line 82, in __init__
+  File "main.pyw", line 89, in load_drinks
+FileNotFoundError: [Errno 2] No such file or directory: './drinks.json'

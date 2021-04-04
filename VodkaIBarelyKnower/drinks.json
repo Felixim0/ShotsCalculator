@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Shnaps",
+        "units_per_drink": "0.69"
+    },
+    {
+        "name": "Sours",
+        "units_per_drink": "1.4"
+    },
+    {
+        "name": "Beer",
+        "units_per_drink": "1"
+    },
+    {
+        "name": "Vodka",
+        "units_per_drink": "1.8"
+    }
+]
