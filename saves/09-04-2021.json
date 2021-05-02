@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Felix",
+        "score": [
+            {
+                "Shnaps": 0
+            },
+            {
+                "Sours": 0
+            },
+            {
+                "Beer": 4
+            },
+            {
+                "Vodka": 1
+            },
+            {
+                "TOTAL SCORE": 0
+            }
+        ]
+    },
+    {
+        "name": "Nathan",
+        "score": [
+            {
+                "Shnaps": 0
+            },
+            {
+                "Sours": 0
+            },
+            {
+                "Beer": 0
+            },
+            {
+                "Vodka": 0
+            },
+            {
+                "TOTAL SCORE": 0
+            }
+        ]
+    },
+    {
+        "name": "Rob",
+        "score": [
+            {
+                "Shnaps": 0
+            },
+            {
+                "Sours": 0
+            },
+            {
+                "Beer": 0
+            },
+            {
+                "Vodka": 0
+            },
+            {
+                "TOTAL SCORE": 0
+            }
+        ]
+    },
+    {
+        "name": "Sam",
+        "score": [
+            {
+                "Shnaps": 0
+            },
+            {
+                "Sours": 0
+            },
+            {
+                "Beer": 0
+            },
+            {
+                "Vodka": 0
+            },
+            {
+                "TOTAL SCORE": 0
+            }
+        ]
+    }
+]

@@ -113,7 +113,7 @@ class People:
 
     def add_drink(self, popup, drink_name, units):
         popup.destroy()
-        self.drinks.append({"name":drink_name,"units_per_drink":units})
+        self.drinks.append({"name":drink_name,"units_per_drink":units if str(units) != "" else 0})
         for person in self.people:
             person.consumption_count.insert(len(person.consumption_count)-1,{drink_name:0})
         
