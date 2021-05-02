@@ -14,5 +14,9 @@
     {
         "name": "Vodka",
         "units_per_drink": "1.8"
+    },
+    {
+        "name": "da",
+        "units_per_drink": 0
     }
 ]
